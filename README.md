@@ -1,7 +1,7 @@
 #XojoHighlight.js
 ###A JavaScript based syntax highlighter for Xojo and REALbasic code blocks.
 
-**XojoHighlight.js** was adapted from [Thom McGrath](thezaz.com)'s updates to [Johnathan Johnson](http://www.nilobject.com)'s `FormatRBCode()` php function.
+**XojoHighlight.js** was adapted from [Thom McGrath](http://www.thezaz.com)'s updates to [Johnathan Johnson](http://www.nilobject.com)'s `FormatRBCode()` php function.
 
 A number of new options flags have been provided to create more flexible formatting.  To accomodate these added options, all original arguments have been buried within a single *options* object/parameter.
 
@@ -130,7 +130,7 @@ Set `spanClassComment` to override the default class applied to found comments.
 *Default value is `'xojo_code_comment'`*
 
 ##Example Code
-Example HTML files are included, but for those perusing prior to download the following examples show the ease of using this script.
+Example HTML files are *soon to be* included, but for now...
 
 ```html
 <html>
