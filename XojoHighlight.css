@@ -1,0 +1,8 @@
+span.xojo_code_text       { font-family: "Inconsolata","Source Code Pro", "Menlo", "Courier", monospace; }
+span.xojo_code_linenumber { color: #888888; }
+span.xojo_code_codeline   { color: #000000; }
+span.xojo_code_keyword    { color: #0000FF; }
+span.xojo_code_integer    { color: #336698; }
+span.xojo_code_real       { color: #006633; }
+span.xojo_code_string     { color: #6600FE; }
+span.xojo_code_comment    { color: #800000; }
