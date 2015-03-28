@@ -339,7 +339,7 @@ function FormatXojoCode(source, options) {
             
             // If we're inside a string, we need to add it to the current token
             // unless it's a quote, in which case we end the current token
-            if (isInQuote && chr !='"') {
+            if(isInQuote && chr !='"') {
                 currentToken += chr;
             } else {
                 // Basically, every character has the same effect if it's an
@@ -349,6 +349,7 @@ function FormatXojoCode(source, options) {
                         // if we're a quote, we need to switch the state
                         isInQuote = !(isInQuote);
                         // Intentional fall-through
+                    case '=':
                     case '(':
                     case ')':
                     case ' ':
@@ -361,15 +362,26 @@ function FormatXojoCode(source, options) {
                     case '\'':
                     case '^':
                         // If we have a current token, add it to the array
-                        if (currentToken !== "") { tokens.push(currentToken); }
+                        if (currentToken != '') { tokens.push(currentToken); }
                         
                         // Add the current character as its own token
                         tokens.push(chr);
                         
                         // Reset the current token
-                        currentToken = "";
+                        currentToken = '';
                         break;
                         
+	                case '.':
+	                	// if we've got a . then check for self and me keywords.
+	                	if(!(isInQuote) && (currentToken.toLowerCase() == 'me' || currentToken.toLowerCase() == 'self')) {
+		                	//push the first part as it's own token
+		                	tokens.push(currentToken); 
+		                	
+		                	//reset the current token with our period
+		                	currentToken = '.';
+		                	break;
+	                	}
+	                	
                     default:
                         // Add the character to the current token
                         currentToken += chr;
@@ -439,7 +451,7 @@ function FormatXojoCode(source, options) {
         // tmp was used to delay the addition to the intentLevel. We add it now
         indentLevel += tmp;
          
-        for(i=0; i < tokens.length; i++) {  
+        for(i=0; i < tokens.length; i++) {
             // Each token now needs to have the entities replaced. This is the perfect time
             // because anything past this will possibly have xhtml tags, and therefore is too
             // late to perform a replacement.
